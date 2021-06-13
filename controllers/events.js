@@ -1,5 +1,4 @@
 const { response } = require('express');
-const { findByIdAndUpdate } = require('../models/Events');
 const Evento = require('../models/Events')
 
 const newEvent = async (req, res = response) => {
@@ -78,7 +77,7 @@ const editEvent = async (req, res = response) => {
     }
 
 }
-const deleteEvent = async(req, res = response) => {
+const deleteEvent = async (req, res = response) => {
 
     const eventId = req.params.id;
     const { uid } = req
