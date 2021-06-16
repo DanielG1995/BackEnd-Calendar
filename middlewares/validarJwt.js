@@ -15,11 +15,11 @@ const validarJWT = (req = request, res = response, next) => {
         );
         req.uid = uid;
         req.name = name;
-
     } catch (error) {
-        return response.status(401).json({
+        return res.status(401).json({
             ok: false,
-            msg: 'Token no válido'
+            msg: 'Token no válido',
+            error
         })
     }
     next();

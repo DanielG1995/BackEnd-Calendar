@@ -47,13 +47,13 @@ const editEvent = async (req, res = response) => {
         const evento = await Evento.findById(eventId)
         if (!evento) {
             return res.status(404).json({
-                ok: true,
+                ok: false,
                 msg: 'No existe el evento'
             })
         }
         if (evento.user.toString() !== uid) {
             return res.status(401).json({
-                ok: true,
+                ok: false,
                 msg: 'No esta autorizado para editar el evento'
             })
         }
@@ -86,14 +86,14 @@ const deleteEvent = async (req, res = response) => {
         const evento = await Evento.findById(eventId)
         if (!evento) {
             return res.status(404).json({
-                ok: true,
+                ok: false,
                 msg: 'No existe el evento'
             })
         }
         if (evento.user.toString() !== uid) {
             return res.status(401).json({
-                ok: true,
-                msg: 'No esta autorizado para editar el evento'
+                ok: false,
+                msg: 'No esta autorizado para eliminar el evento'
             })
         }
         const eventoBorrado = await Evento.findByIdAndDelete(eventId);
